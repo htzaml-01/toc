@@ -1,0 +1,4 @@
+# Ignore unused screen recording reference & OS clutter
+Asset/20261126-0809-28.6529351.mp4
+.DS_Store
+Thumbs.db
