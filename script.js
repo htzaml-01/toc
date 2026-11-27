@@ -54,12 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
 
-  // 2. Branch Accordion (+ / x)
+  // 2. Accordions (FAQ & Branch, + / x)
   document.querySelectorAll('.acc-trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
       const item = trigger.closest('.acc-item');
+      const list = trigger.closest('.accordion-list');
       const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.acc-item').forEach((el) => {
+      list?.querySelectorAll('.acc-item').forEach((el) => {
         el.classList.remove('open');
         el.querySelector('.acc-trigger')?.setAttribute('aria-expanded', 'false');
       });

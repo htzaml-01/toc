@@ -882,11 +882,27 @@ img {
 
 /* ---------- Section 3: Kotak-Kotak 1:1 Partners Band ---------- */
 .partners-band {
-  background-color: var(--toc-charcoal);
-  background-image: url('assets/backgrounds/partners-split-bg.jpg');
-  background-position: center center;
-  background-size: cover;
+  position: relative;
+  background-color: #a81e23;
+  padding-top: 124px;
+}
+
+.partners-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 54px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 54' preserveAspectRatio='none'%3E%3Cpolygon fill='%23ffffff' points='0,0 1440,0 1440,54 0,14'/%3E%3Cpolygon fill='rgba(168,30,35,0.38)' points='0,14 1440,24 1440,54 0,32'/%3E%3Cpolygon fill='rgba(168,30,35,0.68)' points='0,26 1440,34 1440,54 0,44'/%3E%3Cpolygon fill='%23a81e23' points='0,42 1440,28 1440,54 0,54'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.partners-band .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-head-light .head-right {
@@ -954,51 +970,79 @@ img {
   object-fit: cover;
 }
 
-/* ---------- Section 4: Minimal Editorial Team Grid (00:20-00:21) ---------- */
-.team-minimal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 44px 36px;
+
+/* ---------- Section 4: Staff Grid (4-4 Divisions, Clean Portrait Cards) ---------- */
+.staff-division + .staff-division {
+  margin-top: 44px;
 }
 
-.team-minimal-card {
+.staff-division-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--toc-navy);
+  margin: 0 0 20px;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 22px;
+}
+
+.staff-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 18px;
-  border-top: 1px solid var(--toc-border);
 }
 
-.team-quote {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--toc-ink);
-  margin: 0 0 22px;
+.staff-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--toc-surface, #f3f5f7);
 }
 
-.team-person {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.staff-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
 }
 
-.team-person img {
-  width: 44px;
-  height: 44px;
-  border-radius: 4px;
-  object-fit: cover;
-  object-position: top center;
+.staff-card:hover .staff-card-img img {
+  transform: scale(1.03);
 }
 
-.team-person h4 {
-  font-size: 14.5px;
-  margin: 0 0 2px;
+.staff-card-body {
+  text-align: center;
+  padding: 14px 8px 4px;
+}
+
+.staff-card-name {
+  font-size: 16.5px;
+  font-weight: 700;
   color: var(--toc-navy);
+  margin: 0 0 4px;
 }
 
-.team-person span {
-  font-size: 12.5px;
+.staff-card-role {
+  font-size: 13.5px;
   color: var(--toc-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Section 7: Editorial Blog Grid (2 Cards) ---------- */
